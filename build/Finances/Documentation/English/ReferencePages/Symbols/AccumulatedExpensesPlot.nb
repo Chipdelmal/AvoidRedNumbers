@@ -1,0 +1,291 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      9568,        281]
+NotebookOptionsPosition[      7309,        212]
+NotebookOutlinePosition[      9002,        260]
+CellTagsIndexPosition[      8918,        255]
+WindowTitle->AccumulatedExpensesPlot - Wolfram Mathematica
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[" ", "SymbolColorBar",
+ CellMargins->{{Inherited, Inherited}, {-5, 0}}],
+
+Cell[TextData[{
+ ButtonBox["Mathematica",
+  BaseStyle->{"Link", "LinkTrail"},
+  ButtonData->"paclet:Finances/guide/Finances"],
+ StyleBox[" > ", "LinkTrailSeparator"]
+}], "LinkTrail"],
+
+Cell[BoxData[GridBox[{
+   {Cell["FINANCES PACLET SYMBOL", "PacletNameCell"], Cell[TextData[Cell[
+    BoxData[
+     ActionMenuBox[
+      FrameBox["\<\"URL \[RightGuillemet]\"\>",
+       StripOnInput->False], {"\<\"Finances/ref/AccumulatedExpensesPlot\"\>":>
+      None, "\<\"Copy Mathematica url\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell["Finances/ref/AccumulatedExpensesPlot"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+      Delimiter, "\<\"Copy web url\"\>":>
+      Module[{DocumentationSearch`Private`nb$}, 
+       DocumentationSearch`Private`nb$ = NotebookPut[
+          Notebook[{
+            Cell[
+             BoxData[
+              MakeBoxes[
+               Hyperlink[
+               "http://reference.wolfram.com/mathematica/Finances/ref/\
+AccumulatedExpensesPlot.html"], StandardForm]], "Input", TextClipboardType -> 
+             "PlainText"]}, Visible -> False]]; 
+       SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+       FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+       NotebookClose[DocumentationSearch`Private`nb$]; 
+       Null], "\<\"Go to web url\"\>":>FrontEndExecute[{
+        NotebookLocate[{
+          URL[
+           StringJoin[
+           "http://reference.wolfram.com/mathematica/", 
+            "Finances/ref/AccumulatedExpensesPlot", ".html"]], None}]}]},
+      Appearance->None,
+      MenuAppearance->Automatic]],
+     LineSpacing->{1.4, 0}]], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell["AccumulatedExpensesPlot", "ObjectName",
+ CellID->1224892054],
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{
+      "AccumulatedExpensesPlot", "[", "accumulatedExpensesList", "]"}]], 
+      "InlineFormula"],
+     " \[LineSeparator]AccumulatedExpensesPlot receives the accumulated \
+expenses list and returns a plot of them."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, "Rows" -> {{None}}, 
+   "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[ButtonBox["EXAMPLES",
+ BaseStyle->None,
+ Appearance->{Automatic, None},
+ Evaluator->None,
+ Method->"Preemptive",
+ ButtonFunction:>(FrontEndExecute[{
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], All, ButtonCell], 
+    FrontEndToken["OpenCloseGroup"], 
+    FrontEnd`SelectionMove[
+     FrontEnd`SelectedNotebook[], After, 
+     CellContents]}]& )]], "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->150339587],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection",
+ CellID->1316669837],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"januaryExpenses2013", "=", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"335", ",", "\"\<Carls Jr\>\"", ",", 
+       RowBox[{"{", 
+        RowBox[{"2013", ",", "01", ",", "05"}], "}"}], ",", "\"\<Food\>\""}], 
+      "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"100", ",", "\"\<Netflix\>\"", ",", 
+       RowBox[{"{", 
+        RowBox[{"2013", ",", "01", ",", "06"}], "}"}], ",", 
+       "\"\<Netflix\>\""}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"222", ",", "\"\<Burnoise\>\"", ",", 
+       RowBox[{"{", 
+        RowBox[{"2013", ",", "01", ",", "12"}], "}"}], ",", "\"\<Food\>\""}], 
+      "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"122", ",", "\"\<Starbucks\>\"", ",", 
+       RowBox[{"{", 
+        RowBox[{"2013", ",", "01", ",", "15"}], "}"}], ",", 
+       "\"\<Coffee\>\""}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"900", ",", "\"\<Netflix\>\"", ",", 
+       RowBox[{"{", 
+        RowBox[{"2013", ",", "01", ",", "25"}], "}"}], ",", 
+       "\"\<Netflix\>\""}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"222", ",", "\"\<Burnoise\>\"", ",", 
+       RowBox[{"{", 
+        RowBox[{"2013", ",", "01", ",", "28"}], "}"}], ",", "\"\<Food\>\""}], 
+      "}"}]}], "\[IndentingNewLine]", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AccumulatedExpensesPlot", "[", 
+  RowBox[{"AccumulatedExpenses", "[", "januaryExpenses2013", "]"}], 
+  "]"}]}], "Input",
+ CellLabel->"In[1]:=",
+ CellID->2088329582],
+
+Cell[BoxData[
+ GraphicsBox[{{}, 
+   GraphicsComplexBox[{{5., 335.}, {6., 435.}, {12., 657.}, {15., 779.}, {25.,
+     1679.}, {28., 1901.}}, {{{}, {}, 
+      {RGBColor[0.24720000000000014`, 0.24, 0.6], 
+       LineBox[{1, 2, 3, 4, 5, 6}]}}, {
+      {RGBColor[0.24720000000000014`, 0.24, 0.6], InsetBox[
+        StyleBox["\<\"\[FilledCircle]\"\>",
+         StripOnInput->False,
+         FontSize->8.96], 1], InsetBox[
+        StyleBox["\<\"\[FilledCircle]\"\>",
+         StripOnInput->False,
+         FontSize->8.96], 2], InsetBox[
+        StyleBox["\<\"\[FilledCircle]\"\>",
+         StripOnInput->False,
+         FontSize->8.96], 3], InsetBox[
+        StyleBox["\<\"\[FilledCircle]\"\>",
+         StripOnInput->False,
+         FontSize->8.96], 4], InsetBox[
+        StyleBox["\<\"\[FilledCircle]\"\>",
+         StripOnInput->False,
+         FontSize->8.96], 5], InsetBox[
+        StyleBox["\<\"\[FilledCircle]\"\>",
+         StripOnInput->False,
+         FontSize->8.96], 6]}, {}}}], {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->True,
+  AxesLabel->{
+    FormBox["\"Date\"", TraditionalForm], 
+    FormBox["\"Accumulated Expenses\"", TraditionalForm]},
+  AxesOrigin->{5., 335.},
+  ImageSize->800,
+  Method->{},
+  PlotLabel->FormBox[
+    StyleBox["\"\"", Bold, StripOnInput -> False], TraditionalForm],
+  PlotRange->{{5., 28.}, {335., 1901.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{0.46, 0.46}, {31.32, 31.32}}]], "Output",
+ ImageSize->{804, 492},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[1]=",
+ CellID->609760170]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"AccumulatedExpensesPlot - Wolfram Mathematica",
+TaggingRules->{
+ "ModificationHighlight" -> False, 
+  "Metadata" -> {
+   "built" -> "{2013, 5, 5, 11, 32, 14.313205}", "context" -> "Finances`", 
+    "keywords" -> {}, "index" -> True, "label" -> "Finances Paclet Symbol", 
+    "language" -> "en", "paclet" -> "Finances", "status" -> "None", "summary" -> 
+    "AccumulatedExpensesPlot[accumulatedExpensesList] AccumulatedExpensesPlot \
+receives the accumulated expenses list and returns a plot of them.", 
+    "synonyms" -> {}, "title" -> "AccumulatedExpensesPlot", "type" -> 
+    "Symbol", "uri" -> "Finances/ref/AccumulatedExpensesPlot"}, "LinkTrails" -> 
+  "", "SearchTextTranslated" -> ""},
+CellContext->"Global`",
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (January 25, \
+2013)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> 
+  "9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (January 25, 2013)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[3372, 96, 461, 13, 70, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->150339587]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 8776, 248}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[616, 21, 76, 1, 70, "SymbolColorBar"],
+Cell[695, 24, 182, 5, 70, "LinkTrail"],
+Cell[880, 31, 1918, 42, 70, "AnchorBarGrid",
+ CellID->1],
+Cell[2801, 75, 66, 1, 70, "ObjectName",
+ CellID->1224892054],
+Cell[2870, 78, 477, 14, 70, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[3372, 96, 461, 13, 70, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->150339587],
+Cell[CellGroupData[{
+Cell[3858, 113, 149, 5, 70, "ExampleSection",
+ CellID->1316669837],
+Cell[CellGroupData[{
+Cell[4032, 122, 1615, 39, 70, "Input",
+ CellID->2088329582],
+Cell[5650, 163, 1593, 42, 513, "Output",
+ CellID->609760170]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[7282, 210, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)
+
