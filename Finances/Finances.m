@@ -23,6 +23,11 @@ GetPlottableYearAccumulatedIncomes::usage
 GetPlottableYearAccumulatedTransactions::usage
 GetYearStatistics::usage
 YearStatisticsGrid::usage
+GetLabels::usage
+GetTransactionsByType::usage
+GetTotalTransactionsByType::usage
+PieChartExpenses::usage
+PieChartExpensesMonthlyMean::usage
 
 Begin["`Private`"]
 
@@ -93,9 +98,9 @@ GetYearStatistics[yearTransactionsList_] := Module[{accumulatedExpenses, accumul
     		Map[Last, accumulatedTransactions]
     	};
   	yearStatistics = {
-    		{Min[monthTotals[[1]]], Mean[monthTotals[[1]]], Max[monthTotals[[1]]]},
-    		{Min[monthTotals[[2]]], Mean[monthTotals[[2]]], Max[monthTotals[[2]]]},
-    		{Min[monthTotals[[3]]], Mean[monthTotals[[3]]], Max[monthTotals[[3]]]}
+    		{Min[monthTotals[[1]]]//N, Mean[monthTotals[[1]]]//N, Max[monthTotals[[1]]]//N},
+    		{Min[monthTotals[[2]]]//N, Mean[monthTotals[[2]]]//N, Max[monthTotals[[2]]]//N},
+    		{Min[monthTotals[[3]]]//N, Mean[monthTotals[[3]]]//N, Max[monthTotals[[3]]]//N}
    	 	}
 ]
 YearStatisticsGrid[yearTransactionsList_] := Module[{stats},
@@ -108,6 +113,29 @@ YearStatisticsGrid[yearTransactionsList_] := Module[{stats},
     		Prepend[stats[[3]], "Balance"]
     	}, Dividers -> All]
 ]
+
+GetLabels[monthExpenses_] := Union[monthExpenses[[All, 4]]]
+GetTransactionsByType[monthExpenses_] := Module[{labels},
+  	labels = GetLabels[monthExpenses];
+  	Table[Cases[monthExpenses, {_, _, _, labels[[i]]}], {i, 1, Length[labels]}]
+]
+GetTotalTransactionsByType[expensesByType_] := Module[{},
+  	Table[{Total[expensesByType[[i]][[All, 1]]], expensesByType[[i]][[1]][[4]]}, {i, 1, Length[expensesByType]}]
+]
+PieChartExpenses[transactionsList_] := Module[{transactions, expenses},
+  	transactions = GetTotalTransactionsByType[GetTransactionsByType[transactionsList]];
+  	expenses = Cases[transactions, {a_, _} /; a < 0];
+  	PieChart[Abs[expenses[[All, 1]]], ChartLabels -> Placed[expenses[[All, 2]], "VerticalCallout"], ChartStyle -> "Pastel"]
+]
+PieChartExpensesMonthlyMean[transactionsByMonth_] := Module[{monthlyTransactionsByType, labels, transactions, meanTransactions, expenses},
+  	monthlyTransactionsByType = Table[GetTotalTransactionsByType[GetTransactionsByType[transactionsByMonth[[i]]]], {i, 1, Length[transactionsByMonth]}];
+  	labels = Union[Flatten[monthlyTransactionsByType, 1][[All, 2]]];
+  	transactions = Table[Cases[Flatten[monthlyTransactionsByType, 1], {_, i}], {i, labels}];
+  	meanTransactions = Table[{Total[transactions[[i]][[All, 1]]]/Length[monthlyTransactionsByType] // N, transactions[[i]][[1]][[2]]}, {i, 1, Length[transactions]}];
+  	expenses = Cases[meanTransactions, {a_, _} /; a < 0];
+  	PieChart[Abs[expenses[[All, 1]]], ChartLabels -> Placed[expenses[[All, 2]], "VerticalCallout"], ChartStyle -> "Pastel"]
+]
+
 
 End[]
 EndPackage[]
